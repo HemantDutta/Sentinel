@@ -11,6 +11,7 @@ export const Home = () => {
     function getIP(ip) {
         setIp(ip.ip);
         setIpData(ip.data);
+        console.log(ip);
     }
 
     //Get Battery Info Higher Order Function
@@ -44,6 +45,7 @@ export const Home = () => {
     //Check Data Fetching
     useEffect(() => {
         Digger.fetchIP(getIP);
+        Digger.fetchBatteryInfo(getBatteryInfo);
     }, [])
 
     return (
