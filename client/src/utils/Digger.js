@@ -85,34 +85,19 @@ export const Digger = {
         let elapsedTime = endTime - startTime;
         return { allocatedSize: Math.ceil(jsHeapSizeLimit), totalSize: Math.ceil(totalJSHeapSize), usedSize: Math.ceil(usedJSHeapSize), performanceTime: Math.ceil(elapsedTime), approxMemory };
     },
-    fetchBatteryInfo() {
+    fetchBatteryInfo(fn) {
         if ('getBattery' in navigator) {
             navigator.getBattery().then(function (battery) {
-                console.log("Battery Level: " + (battery.level * 100) + "%");
-                console.log("Charging: " + (battery.charging ? "Yes" : "No"));
-                console.log("Charging Time: " + battery.chargingTime + " seconds");
-                console.log("Discharging Time: " + battery.dischargingTime + " seconds");
+                let batteryLevel =  (battery.level * 100) + "%";
+                let chargingStatus = battery.charging ? "Yes" : "No";
+                let chargingTime =  battery.chargingTime + " seconds";
+                let dischargingtime = battery.dischargingTime + " seconds";
 
-                battery.addEventListener('chargingchange', function () {
-                    console.log("Charging: " + (battery.charging ? "Yes" : "No"));
-                });
-
-                battery.addEventListener('levelchange', function () {
-                    console.log("Battery Level: " + (battery.level * 100) + "%");
-                });
-
-                battery.addEventListener('chargingtimechange', function () {
-                    console.log("Charging Time: " + battery.chargingTime + " seconds");
-                });
-
-                battery.addEventListener('dischargingtimechange', function () {
-                    console.log("Discharging Time: " + battery.dischargingTime + " seconds");
-                });
+                fn({batteryLevel, chargingStatus, chargingTime, dischargingtime});
             });
         } else {
-            console.log("Battery Status API is not supported in this browser.");
+            fn({error: "Not Found"});
         }
-
     }
 }
 
