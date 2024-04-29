@@ -3,9 +3,14 @@ import { Digger } from "../utils/Digger"
 
 export const Home = () => {
 
+    //States
+    const [ip, setIp] = useState("");
+    const [ipData, setIpData] = useState({});
+
     //Get IP Higher Order Function
     function getIP(ip) {
-        console.log(ip);
+        setIp(ip.ip);
+        setIpData(ip.data);
     }
 
     //Get Battery Info Higher Order Function
@@ -38,12 +43,12 @@ export const Home = () => {
 
     //Check Data Fetching
     useEffect(() => {
+        Digger.fetchIP(getIP);
     }, [])
 
     return (
         <>
             <div className="home" id="home">
-                Home
             </div>
         </>
     )
