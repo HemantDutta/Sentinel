@@ -13,7 +13,7 @@ export const Home = () => {
 
     //Check Data Fetching
     useEffect(() => {
-        console.log(Digger.fetchMemoryInfo());
+        Digger.fetchBatteryInfo();
     }, [])
 
     return (

@@ -74,15 +74,45 @@ export const Digger = {
         }
     },
     fetchMemoryInfo() {
-        let bytes = 1073741824;
-        let {jsHeapSizeLimit, totalJSHeapSize, usedJSHeapSize} = window.performance.memory;
+        let bytes = Math.pow(1024, 3);
+        let approxMemory = navigator.deviceMemory;
+        let { jsHeapSizeLimit, totalJSHeapSize, usedJSHeapSize } = window.performance.memory;
         let startTime = window.performance.now();
-        for(let i = 0; i<10000000; i++) {
+        for (let i = 0; i < 10000000; i++) {
             let temp = i + 1;
         }
         let endTime = window.performance.now();
         let elapsedTime = endTime - startTime;
-        return {allocatedSize: Math.ceil(jsHeapSizeLimit), totalSize: Math.ceil(totalJSHeapSize), usedSize: Math.ceil(usedJSHeapSize), performanceTime: Math.ceil(elapsedTime)};
+        return { allocatedSize: Math.ceil(jsHeapSizeLimit), totalSize: Math.ceil(totalJSHeapSize), usedSize: Math.ceil(usedJSHeapSize), performanceTime: Math.ceil(elapsedTime), approxMemory };
+    },
+    fetchBatteryInfo() {
+        if ('getBattery' in navigator) {
+            navigator.getBattery().then(function (battery) {
+                console.log("Battery Level: " + (battery.level * 100) + "%");
+                console.log("Charging: " + (battery.charging ? "Yes" : "No"));
+                console.log("Charging Time: " + battery.chargingTime + " seconds");
+                console.log("Discharging Time: " + battery.dischargingTime + " seconds");
+
+                battery.addEventListener('chargingchange', function () {
+                    console.log("Charging: " + (battery.charging ? "Yes" : "No"));
+                });
+
+                battery.addEventListener('levelchange', function () {
+                    console.log("Battery Level: " + (battery.level * 100) + "%");
+                });
+
+                battery.addEventListener('chargingtimechange', function () {
+                    console.log("Charging Time: " + battery.chargingTime + " seconds");
+                });
+
+                battery.addEventListener('dischargingtimechange', function () {
+                    console.log("Discharging Time: " + battery.dischargingTime + " seconds");
+                });
+            });
+        } else {
+            console.log("Battery Status API is not supported in this browser.");
+        }
+
     }
 }
 
