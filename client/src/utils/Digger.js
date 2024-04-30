@@ -22,6 +22,9 @@ export const Digger = {
             .then((res) => {
                 fetchUserInfoFromIp(res.data.ip, fn);
             })
+            .catch(err => {
+                fn({error: "IP Details Not Found"});  
+            })
         }
         catch(err) {
             return { error: "IP Details Not Found" };

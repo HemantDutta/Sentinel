@@ -4,19 +4,54 @@ import { Digger } from "../utils/Digger"
 export const Home = () => {
 
     //States
-    const [ip, setIp] = useState("");
     const [ipData, setIpData] = useState({});
+    const [userAgent, setUserAgent] = useState("");
+    const [referrer, setReferrer] = useState("");
+    const [deviceDimensions, setDeviceDimensions] = useState({});
+    const [pluginsExtensions, setPluginsExtensions] = useState({});
+    const [connectionDetails, setConnectionDetails] = useState({});
+    const [hardwareInfo, setHardwareInfo] = useState({});
+    const [connectedDevices, setConnectedDevices] = useState([]);
+    const [gpuInfo, setGpuInfo] = useState({});
+    const [memoryInfo, setMemoryInfo] = useState({});
+    const [batteryInfo, setBatteryInfo] = useState({});
+
+    //Error Handling State
+    const [errors, setErrors] = useState({
+        ip: false,
+        userAgent: false,
+        referrer: false,
+        deviceDimensions: false,
+        pluginsExtensions: false,
+        connectionDetails: false,
+        hardwareInfo: false,
+        connectedDevices: false,
+        gpuInfo: false,
+        memoryInfo: false,
+        batteryInfo: false
+    });
+
+    //Error Setter
+    function errorSetter(name) {
+        setErrors({
+            ...errors,
+            [name]: true
+        })
+    }
 
     //Get IP Higher Order Function
     function getIP(ip) {
-        setIp(ip.ip);
-        setIpData(ip.data);
-        console.log(ip);
+        if(ip.error) {
+            errorSetter("ip");
+        }
+        else {
+            setIpData(ip);
+        }
     }
 
     //Get Battery Info Higher Order Function
     function getBatteryInfo(info) {
-        console.log(info);
+        
     }
 
     //Call Battery Info on Battery Events
@@ -45,13 +80,17 @@ export const Home = () => {
     //Check Data Fetching
     useEffect(() => {
         Digger.fetchIP(getIP);
-        Digger.fetchBatteryInfo(getBatteryInfo);
-        console.log(Digger.fetchGPUInfo());
     }, [])
+
+    //Error Logger (Remove in PROD)
+    useEffect(()=>{
+        console.log(errors);
+    },[errors])
 
     return (
         <>
             <div className="home" id="home">
+                
             </div>
         </>
     )
