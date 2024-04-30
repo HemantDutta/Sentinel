@@ -96,6 +96,7 @@ export const Home = () => {
         Digger.fetchIP(getIP);
         Digger.fetchBatteryInfo(getBatteryInfo);
         setGpuInfo(Digger.fetchGPUInfo())
+        setHardwareInfo(Digger.fetchHardwareInfo())
     }, [])
 
     //Error Logger (Remove in PROD)
@@ -120,6 +121,14 @@ export const Home = () => {
             text: "Graphics Card Information",
             bulletData: gpuInfo,
             error: errors.gpuInfo
+        },
+        {
+            title: "Hardware Info",
+            specialClass: "HardInfo",
+            cardIconSrc: "\\assets\\info-icons\\cpuInfo.png",
+            text: "System Hardware Information",
+            bulletData: hardwareInfo,
+            error: errors.hardwareInfo
         }
     ]
 

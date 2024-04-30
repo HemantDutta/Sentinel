@@ -76,7 +76,15 @@ export const Digger = {
         try {
             let platform = navigator.userAgentData.platform;
             let logicalProcessors = navigator.hardwareConcurrency;
-            return { platform, logicalProcessors };
+            return {
+                platform: {
+                    icon: platform.match(/win/gi) ? "fa-brands fa-windows" : platform.match(/android/gi) ? "fa-brands fa-android" : platform.match(/linux/gi) ? "fa-brands fa-linux" : platform.substring(0,1) === "i" || platform.match(/mac/gi) ? "fa-brands fa-apple" : "fa-solid fa-computer",
+                    value: platform
+                }, logicalProcessors: {
+                    icon: "fa-solid fa-microchip",
+                    value: logicalProcessors
+                }
+            };
         }
         catch (err) {
             return { error: "Hardware Information Not Found" };
@@ -108,7 +116,7 @@ export const Digger = {
                 return {
                     renderer: {
                         icon: "fa-solid fa-gamepad",
-                        value: renderer.substring(7,42) + "..."
+                        value: renderer.match(/angle/gi) ? renderer.substring(7, 42) + "..." : renderer
                     }, vendor: {
                         icon: "fa-solid fa-copyright",
                         value: vendor

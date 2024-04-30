@@ -79,6 +79,16 @@
     background: linear-gradient(to right, transparent, #FF55BB);
 }
 
+.home .info-grid .info-item.HardInfo {
+    box-shadow:  20px 20px 60px #131313,
+    -10px -10px 20px #443e09;
+    grid-column: 1/2;
+}
+
+.home .info-grid .info-item.HardInfo .card-glow {
+    background: linear-gradient(to right, transparent, #FFEA20);
+}
+
 .home .info-grid .info-item .card-icon {
     height: 128px;
     rotate: -25deg;   
