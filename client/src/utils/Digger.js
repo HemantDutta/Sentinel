@@ -10,8 +10,8 @@ function fetchUserInfoFromIp(ip, fn) {
             fn({ ip: ip, data: res.data });
         })
         .catch(err => {
-            fn({error: "IP Details Not Found"});
-        }) 
+            fn({ error: "IP Details Not Found" });
+        })
 }
 
 //Digger Object
@@ -19,14 +19,14 @@ export const Digger = {
     fetchIP(fn) {
         try {
             axios.get(endpoint + "/fetch-ip")
-            .then((res) => {
-                fetchUserInfoFromIp(res.data.ip, fn);
-            })
-            .catch(err => {
-                fn({error: "IP Details Not Found"});  
-            })
+                .then((res) => {
+                    fetchUserInfoFromIp(res.data.ip, fn);
+                })
+                .catch(err => {
+                    fn({ error: "IP Details Not Found" });
+                })
         }
-        catch(err) {
+        catch (err) {
             return { error: "IP Details Not Found" };
         }
     },
@@ -44,8 +44,8 @@ export const Digger = {
             let screenAvailHeight = window.screen.availHeight;
             return { screenWidth, screenHeight, screenAvailHeight, screenAvailWidth };
         }
-        catch(err) {
-            return {error: "Device Dimensions Not Found"};
+        catch (err) {
+            return { error: "Device Dimensions Not Found" };
         }
     },
     fetchPluginsExtensions() {
@@ -54,7 +54,7 @@ export const Digger = {
             let extensions = navigator.userAgent;
             return { plugins, extensions };
         }
-        catch(err) {
+        catch (err) {
             return { error: "Plugins & Extensions Not Found" };
         }
     },
@@ -68,7 +68,7 @@ export const Digger = {
                 return { error: "Connection Details Not Found" };
             }
         }
-        catch(err) {
+        catch (err) {
             return { error: "Connection Details Not Found" };
         }
     },
@@ -78,23 +78,23 @@ export const Digger = {
             let logicalProcessors = navigator.hardwareConcurrency;
             return { platform, logicalProcessors };
         }
-        catch(err) {
-            return {error: "Hardware Information Not Found"};
+        catch (err) {
+            return { error: "Hardware Information Not Found" };
         }
     },
     fetchConnectedDevices() {
         try {
             navigator.mediaDevices.enumerateDevices()
-            .then(devices => {
-                console.log("Available Devices:");
-                return devices;
-            })
-            .catch(error => {
-                return {error: "Connected Devices Not Found"};
-            });
+                .then(devices => {
+                    console.log("Available Devices:");
+                    return devices;
+                })
+                .catch(error => {
+                    return { error: "Connected Devices Not Found" };
+                });
         }
-        catch(err) {
-            return {error: "Connected Devices Not Found"};
+        catch (err) {
+            return { error: "Connected Devices Not Found" };
         }
     },
     fetchGPUInfo() {
@@ -110,7 +110,7 @@ export const Digger = {
                 return { error: "GPU Information Not Found" };
             }
         }
-        catch(err) {
+        catch (err) {
             return { error: "GPU Information Not Found" };
         }
     },
@@ -127,26 +127,34 @@ export const Digger = {
             let elapsedTime = endTime - startTime;
             return { allocatedSize: Math.ceil(jsHeapSizeLimit), totalSize: Math.ceil(totalJSHeapSize), usedSize: Math.ceil(usedJSHeapSize), performanceTime: Math.ceil(elapsedTime), approxMemory };
         }
-        catch(err) {
-            return {error: "Memeory Information Not Found"};
+        catch (err) {
+            return { error: "Memeory Information Not Found" };
         }
     },
     fetchBatteryInfo(fn) {
         try {
             if ('getBattery' in navigator) {
                 navigator.getBattery().then(function (battery) {
-                    let batteryLevel = (battery.level * 100) + "%";
+                    let batteryLevel = (battery.level * 100);
                     let chargingStatus = battery.charging ? "Yes" : "No";
                     let chargingTime = battery.chargingTime + " seconds";
                     let dischargingtime = battery.dischargingTime + " seconds";
-    
-                    fn({ batteryLevel, chargingStatus, chargingTime, dischargingtime });
+
+                    fn({
+                        batteryLevel: {
+                            icon: batteryLevel >= 50 && batteryLevel < 75 ? "fa-solid fa-battery-half" : batteryLevel >= 75 && batteryLevel < 90 ? "fa-solid fa-battery-three-quarters" : batteryLevel >= 90 ? "fa-solid fa-battery-full" : "fa-solid fa-battery-quarter",
+                            value: batteryLevel + "%"
+                        }, chargingStatus: {
+                            icon: chargingStatus === "Yes" ? "fa-solid fa-plug" : "fa-solid fa-plug-circle-xmark",
+                            value: chargingStatus === "Yes" ? "Charging" : "Not Charging"
+                        }
+                    });
                 });
             } else {
                 fn({ error: "Battery Information Not Found" });
             }
         }
-        catch(err) {
+        catch (err) {
             fn({ error: "Battery Information Not Found" });
         }
     }
