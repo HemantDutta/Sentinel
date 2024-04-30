@@ -107,6 +107,17 @@
     background: linear-gradient(to right, transparent, #FF8400);
 }
 
+.home .info-grid .info-item.ipData {
+    box-shadow:  20px 20px 60px #131313,
+    -10px -10px 20px #074b39;
+    grid-column: 2/-1;
+    grid-row: 1/3;
+}
+
+.home .info-grid .info-item.ipData .card-glow {
+    background: linear-gradient(to right, transparent, #15F5BA);
+}
+
 .home .info-grid .info-item .card-icon {
     height: 128px;
     rotate: -25deg;   

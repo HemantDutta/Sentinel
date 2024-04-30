@@ -173,10 +173,32 @@ export const Home = () => {
                 {/* Blobs End */}
                 {/* Information Grid */}
                 <div className="info-grid pt-32 px-5 relative z-40">
+                    <div className="info-item ipData relative p-5 rounded-lg flex flex-col h-full w-full overflow-hidden">
+                        <div className="card-glow absolute rounded-full z-10" />
+                        <img src="\assets\info-icons\connectionInfo.png" alt="IP Data" className="card-icon absolute -top-5 -right-5 z-20" />
+                        <span className="title text-white bit-font text-4xl relative z-40">IP Data</span>
+                        {
+                            errors.ip &&
+                            <span className="details text-gray-400">{errors.ip}</span>
+                        }
+                        {
+                            !errors.ip &&
+                            <>
+                                <span className="details text-gray-400 relative z-40">Data Fetched Through Your IP</span>
+                                <div className="bullet-grid mt-4 relative z-40">
+                                    <div className="bullet-item text-white flex items-center gap-x-2">
+                                        {/* <i className={value[1].icon} />
+                                        <span className="bullet-text">{value[1].value}</span> */}
+                                    </div>
+
+                                </div>
+                            </>
+                        }
+                    </div>
                     {
                         InfoItemData.map((value, index) => {
                             return (
-                                <InfoItem data={value} key={index}/>
+                                <InfoItem data={value} key={index} />
                             )
                         })
                     }

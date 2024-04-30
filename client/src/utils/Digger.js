@@ -88,7 +88,7 @@ export const Digger = {
                     value: platform
                 }, logicalProcessors: {
                     icon: "fa-solid fa-microchip",
-                    value: logicalProcessors
+                    value: logicalProcessors + " cores"
                 }
             };
         }
