@@ -34,7 +34,7 @@ export const Digger = {
         return { userAgent: navigator.userAgent };
     },
     fetchReferrer() {
-        return { referrer: document.refer }
+        return { referrer: document.referrer }
     },
     fetchDeviceDimnesions() {
         try {
@@ -133,7 +133,7 @@ export const Digger = {
     },
     fetchBatteryInfo(fn) {
         try {
-            if ('getBttery' in navigator) {
+            if ('getBattery' in navigator) {
                 navigator.getBattery().then(function (battery) {
                     let batteryLevel = (battery.level * 100) + "%";
                     let chargingStatus = battery.charging ? "Yes" : "No";

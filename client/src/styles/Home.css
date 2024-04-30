@@ -1,0 +1,70 @@
+/* Home Page StyleSheet */
+
+:root {
+    --bg-color: #131313;
+    --clr-1: #E26EE5;
+    --clr-2: #7E30E1;
+    --clr-3: #49108B;
+    --info-item-bg: #181818;
+}
+
+.home {
+    background-color: var(--bg-color);
+    min-height: 100vh;
+}
+
+/* Blobs */
+
+.home .blob {
+    position: absolute;
+    height: 300px;
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+    background: linear-gradient(to top, var(--clr-3), var(--clr-2), var(--clr-1));
+    filter: blur(50px);
+}
+
+.home .blob.blob-glow {
+    filter: blur(150px);
+}
+
+/* Blobs End */
+
+/* Info-Grid */
+
+.home .info-grid {
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+/* Info-Grid End */
+
+/* Info Item */
+
+.home .info-grid .info-item {
+    background-image: linear-gradient(#202020 2px, transparent 2px), linear-gradient(to right, #202020 2px, transparent 2px);
+    background-size: 53px 53px;
+    background-color: #181818;
+    box-shadow:  20px 20px 60px #131313,
+    -20px -20px 60px #22351f;
+}
+
+.home .info-grid .info-item .card-glow {
+    height: 100%;
+    width: 80%;
+    right: -10%;
+    top: -15%;
+    aspect-ratio: 1/1;
+    filter: blur(20px);
+    background: linear-gradient(to right, transparent, #a6ff96);
+}
+
+.home .info-grid .info-item .card-icon {
+    height: 128px;
+    rotate: -25deg;   
+    opacity: 0.2;
+}
+
+/* Info Item End */

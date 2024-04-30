@@ -1,0 +1,18 @@
+/* Sentinel Global Stylesheet */
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: "Ubuntu", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.bit-font {
+    font-family: "Jersey 10", sans-serif;
+}
