@@ -184,7 +184,10 @@ export const Home = () => {
                         }
                         {
                             !ipLoaded && !errors.ip &&
-                            <span className="details text-gray-400">Loading IP Data</span>
+                            <div className="flex items-center gap-2">
+                                <span className="details text-gray-400">Loading IP Data</span>
+                                <img src="/assets/Home/sen_loader.svg" alt="Loader" className="h-4"/>
+                            </div>
                         }
                         {
                             !errors.ip && ipLoaded &&
