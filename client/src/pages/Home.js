@@ -173,7 +173,7 @@ export const Home = () => {
                 <div className="blob blob-glow -top-24 left-96 z-10" /> */}
                 {/* Blobs End */}
                 {/* Information Grid */}
-                <div className="info-grid pt-32 px-5 relative z-40">
+                <div className="info-grid pt-32 pb-20 px-5 relative z-40">
                     <div className="info-item ipData relative p-5 rounded-lg flex flex-col h-full w-full overflow-hidden">
                         <div className="card-glow absolute rounded-full z-10" />
                         <img src="\assets\info-icons\ipInfo.png" alt="IP Data" className="card-icon absolute -top-5 -right-5 z-20" />
@@ -208,23 +208,23 @@ export const Home = () => {
                                         <span className="bullet-text">{ipData.data.country}</span>
                                     </div>
                                     <div className="bullet-item text-white flex items-center gap-x-2">
-                                        <i class="fa-solid fa-clock" />
+                                        <i className="fa-solid fa-clock" />
                                         <span className="bullet-text">{ipData.data.timezone}</span>
                                     </div>
                                     <div className="bullet-item text-white flex items-center gap-x-2">
-                                        <i class="fa-solid fa-earth-europe"></i>
+                                        <i className="fa-solid fa-earth-europe"></i>
                                         <span className="bullet-text">LAT: {ipData.data.lat}</span>
                                     </div>
                                     <div className="bullet-item text-white flex items-center gap-x-2">
-                                        <i class="fa-solid fa-earth-asia"></i>
+                                        <i className="fa-solid fa-earth-asia"></i>
                                         <span className="bullet-text">LON: {ipData.data.lon}</span>
                                     </div>
                                     <div className="bullet-item text-white flex items-center gap-x-2">
-                                        <i class="fa-solid fa-building"></i>
+                                        <i className="fa-solid fa-building"></i>
                                         <span className="bullet-text">ZIP: {ipData.data.zip}</span>
                                     </div>
                                     <div className="bullet-item text-white flex items-center gap-x-2">
-                                        <i class="fa-solid fa-globe" />
+                                        <i className="fa-solid fa-globe" />
                                         <span className="bullet-text">ISP: {ipData.data.isp}</span>
                                     </div>
                                 </div>

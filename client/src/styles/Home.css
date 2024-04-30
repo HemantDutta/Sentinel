@@ -109,7 +109,7 @@
 
 .home .info-grid .info-item.ipData {
     box-shadow:  20px 20px 60px #131313,
-    -10px -10px 20px #074b39;
+    -2px -2px 20px #074b39;
     grid-column: 2/-1;
     grid-row: 1/3;
 }
@@ -132,4 +132,19 @@
     align-items: start;
 }
 
+@media screen and (max-width: 921px) {
+    .home .info-grid .info-item .bullet-grid  {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 744px) {
+    .home .info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .home .info-grid > * {
+        grid-column: 1/-1 !important;
+    }
+}
 /* Info Item End */
