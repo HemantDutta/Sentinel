@@ -63,7 +63,13 @@ export const Digger = {
             if (navigator.connection) {
                 let connectionType = navigator.connection.effectiveType;
                 let connectionSpeed = navigator.connection.downlink;
-                return { connectionType, connectionSpeed };
+                return { connectionType: {
+                    icon: "fa-solid fa-wifi",
+                    value: connectionType
+                }, connectionSpeed: {
+                    icon: "fa-solid fa-gauge",
+                    value: connectionSpeed + " Mbps"
+                } };
             } else {
                 return { error: "Connection Details Not Found" };
             }
@@ -90,19 +96,18 @@ export const Digger = {
             return { error: "Hardware Information Not Found" };
         }
     },
-    fetchConnectedDevices() {
+    fetchConnectedDevices(fn) {
         try {
             navigator.mediaDevices.enumerateDevices()
                 .then(devices => {
-                    console.log("Available Devices:");
-                    return devices;
+                    fn({error: "", data: devices});
                 })
                 .catch(error => {
-                    return { error: "Connected Devices Not Found" };
+                    fn({error: "Connected Devices Not Found" });
                 });
         }
         catch (err) {
-            return { error: "Connected Devices Not Found" };
+            fn({error: "Connected Devices Not Found"});
         }
     },
     fetchGPUInfo() {

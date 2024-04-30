@@ -81,12 +81,30 @@
 
 .home .info-grid .info-item.HardInfo {
     box-shadow:  20px 20px 60px #131313,
-    -10px -10px 20px #443e09;
+    -10px -10px 20px #284b50;
     grid-column: 1/2;
 }
 
 .home .info-grid .info-item.HardInfo .card-glow {
-    background: linear-gradient(to right, transparent, #FFEA20);
+    background: linear-gradient(to right, transparent, #79E0EE);
+}
+
+.home .info-grid .info-item.connectedDevices {
+    box-shadow:  20px 20px 60px #131313,
+    -10px -10px 20px #444629;
+}
+
+.home .info-grid .info-item.connectedDevices .card-glow {
+    background: linear-gradient(to right, transparent, #F8FF95);
+}
+
+.home .info-grid .info-item.connection {
+    box-shadow:  20px 20px 60px #131313,
+    -10px -10px 20px #532b00;
+}
+
+.home .info-grid .info-item.connection .card-glow {
+    background: linear-gradient(to right, transparent, #FF8400);
 }
 
 .home .info-grid .info-item .card-icon {

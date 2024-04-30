@@ -63,6 +63,16 @@ export const Home = () => {
         }
     }
 
+    //Get Connected Devices Higher Order Function
+    function getConnectedDevices(info) {
+        if (info.error) {
+            errorSetter("connectedDevices", info.error)
+        }
+        else {
+            setConnectedDevices(info.data);
+        }
+    }
+
     //Call Battery Info on Battery Events
     useEffect(() => {
         if ('getBattery' in navigator) {
@@ -97,6 +107,8 @@ export const Home = () => {
         Digger.fetchBatteryInfo(getBatteryInfo);
         setGpuInfo(Digger.fetchGPUInfo())
         setHardwareInfo(Digger.fetchHardwareInfo())
+        Digger.fetchConnectedDevices(getConnectedDevices);
+        setConnectionDetails(Digger.fetchConnectionDetails());
     }, [])
 
     //Error Logger (Remove in PROD)
@@ -129,7 +141,23 @@ export const Home = () => {
             text: "System Hardware Information",
             bulletData: hardwareInfo,
             error: errors.hardwareInfo
-        }
+        },
+        {
+            title: "Connected Devices",
+            specialClass: "connectedDevices",
+            cardIconSrc: "\\assets\\info-icons\\deviceInfo.png",
+            text: "Devices Connected to your System",
+            bulletData: connectedDevices,
+            error: errors.connectedDevices
+        },
+        {
+            title: "Connection",
+            specialClass: "connection",
+            cardIconSrc: "\\assets\\info-icons\\connectionInfo.png",
+            text: "Network Connection Details",
+            bulletData: connectionDetails,
+            error: errors.connectionDetails
+        },
     ]
 
     return (
