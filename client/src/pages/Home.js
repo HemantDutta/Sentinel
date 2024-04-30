@@ -18,6 +18,7 @@ export const Home = () => {
     const [gpuInfo, setGpuInfo] = useState({});
     const [memoryInfo, setMemoryInfo] = useState({});
     const [batteryInfo, setBatteryInfo] = useState({});
+    const [ipLoaded, setIpLoaded] = useState(false);
 
     //Error Handling State
     const [errors, setErrors] = useState({
@@ -49,6 +50,7 @@ export const Home = () => {
         }
         else {
             setIpData(ip);
+            setIpLoaded(true);
         }
     }
 
@@ -58,7 +60,6 @@ export const Home = () => {
             errorSetter("batteryInfo", info.error)
         }
         else {
-            console.log(info);
             setBatteryInfo(info);
         }
     }
@@ -175,22 +176,54 @@ export const Home = () => {
                 <div className="info-grid pt-32 px-5 relative z-40">
                     <div className="info-item ipData relative p-5 rounded-lg flex flex-col h-full w-full overflow-hidden">
                         <div className="card-glow absolute rounded-full z-10" />
-                        <img src="\assets\info-icons\connectionInfo.png" alt="IP Data" className="card-icon absolute -top-5 -right-5 z-20" />
+                        <img src="\assets\info-icons\ipInfo.png" alt="IP Data" className="card-icon absolute -top-5 -right-5 z-20" />
                         <span className="title text-white bit-font text-4xl relative z-40">IP Data</span>
                         {
                             errors.ip &&
                             <span className="details text-gray-400">{errors.ip}</span>
                         }
                         {
-                            !errors.ip &&
+                            !ipLoaded && !errors.ip &&
+                            <span className="details text-gray-400">Loading IP Data</span>
+                        }
+                        {
+                            !errors.ip && ipLoaded &&
                             <>
                                 <span className="details text-gray-400 relative z-40">Data Fetched Through Your IP</span>
+                                <span className="address text-xl text-cyan-400 ">{ipData.ip}</span>
                                 <div className="bullet-grid mt-4 relative z-40">
                                     <div className="bullet-item text-white flex items-center gap-x-2">
-                                        {/* <i className={value[1].icon} />
-                                        <span className="bullet-text">{value[1].value}</span> */}
+                                        <i className="fa-solid fa-city" />
+                                        <span className="bullet-text">{ipData.data.city}</span>
                                     </div>
-
+                                    <div className="bullet-item text-white flex items-center gap-x-2">
+                                        <i className="fa-solid fa-map" />
+                                        <span className="bullet-text">{ipData.data.regionName}</span>
+                                    </div>
+                                    <div className="bullet-item text-white flex items-center gap-x-2">
+                                        <img src={`https://flagsapi.com/${ipData.data.countryCode}/flat/64.png`} className="h-10 rounded-full" alt={`${ipData.data.country}`} />
+                                        <span className="bullet-text">{ipData.data.country}</span>
+                                    </div>
+                                    <div className="bullet-item text-white flex items-center gap-x-2">
+                                        <i class="fa-solid fa-clock" />
+                                        <span className="bullet-text">{ipData.data.timezone}</span>
+                                    </div>
+                                    <div className="bullet-item text-white flex items-center gap-x-2">
+                                        <i class="fa-solid fa-earth-europe"></i>
+                                        <span className="bullet-text">LAT: {ipData.data.lat}</span>
+                                    </div>
+                                    <div className="bullet-item text-white flex items-center gap-x-2">
+                                        <i class="fa-solid fa-earth-asia"></i>
+                                        <span className="bullet-text">LON: {ipData.data.lon}</span>
+                                    </div>
+                                    <div className="bullet-item text-white flex items-center gap-x-2">
+                                        <i class="fa-solid fa-building"></i>
+                                        <span className="bullet-text">ZIP: {ipData.data.zip}</span>
+                                    </div>
+                                    <div className="bullet-item text-white flex items-center gap-x-2">
+                                        <i class="fa-solid fa-globe" />
+                                        <span className="bullet-text">ISP: {ipData.data.isp}</span>
+                                    </div>
                                 </div>
                             </>
                         }

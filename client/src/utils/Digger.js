@@ -7,6 +7,7 @@ const endpoint = "https://sentinel-server.onrender.com";
 function fetchUserInfoFromIp(ip, fn) {
     axios.get("http://ip-api.com/json/" + ip)
         .then((res) => {
+            console.log(res.data);
             fn({ ip: ip, data: res.data });
         })
         .catch(err => {
