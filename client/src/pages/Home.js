@@ -51,7 +51,12 @@ export const Home = () => {
 
     //Get Battery Info Higher Order Function
     function getBatteryInfo(info) {
-        
+        if(info.error) {
+            errorSetter("batteryInfo")
+        }
+        else {
+            setBatteryInfo(info);
+        }
     }
 
     //Call Battery Info on Battery Events
