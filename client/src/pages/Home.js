@@ -46,6 +46,7 @@ export const Home = () => {
     useEffect(() => {
         Digger.fetchIP(getIP);
         Digger.fetchBatteryInfo(getBatteryInfo);
+        console.log(Digger.fetchGPUInfo());
     }, [])
 
     return (
