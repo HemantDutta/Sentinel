@@ -18,31 +18,31 @@ export const Home = () => {
 
     //Error Handling State
     const [errors, setErrors] = useState({
-        ip: false,
-        userAgent: false,
-        referrer: false,
-        deviceDimensions: false,
-        pluginsExtensions: false,
-        connectionDetails: false,
-        hardwareInfo: false,
-        connectedDevices: false,
-        gpuInfo: false,
-        memoryInfo: false,
-        batteryInfo: false
+        ip: "",
+        userAgent: "",
+        referrer: "",
+        deviceDimensions: "",
+        pluginsExtensions: "",
+        connectionDetails: "",
+        hardwareInfo: "",
+        connectedDevices: "",
+        gpuInfo: "",
+        memoryInfo: "",
+        batteryInfo: ""
     });
 
     //Error Setter
-    function errorSetter(name) {
+    function errorSetter(name, value) {
         setErrors({
             ...errors,
-            [name]: true
+            [name]: value
         })
     }
 
     //Get IP Higher Order Function
     function getIP(ip) {
         if(ip.error) {
-            errorSetter("ip");
+            errorSetter("ip", ip.error);
         }
         else {
             setIpData(ip);
@@ -52,7 +52,7 @@ export const Home = () => {
     //Get Battery Info Higher Order Function
     function getBatteryInfo(info) {
         if(info.error) {
-            errorSetter("batteryInfo")
+            errorSetter("batteryInfo", info.error)
         }
         else {
             setBatteryInfo(info);

@@ -133,7 +133,7 @@ export const Digger = {
     },
     fetchBatteryInfo(fn) {
         try {
-            if ('getBattery' in navigator) {
+            if ('getBttery' in navigator) {
                 navigator.getBattery().then(function (battery) {
                     let batteryLevel = (battery.level * 100) + "%";
                     let chargingStatus = battery.charging ? "Yes" : "No";
