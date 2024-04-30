@@ -112,7 +112,7 @@ export const Home = () => {
                 {/* Blobs End */}
                 {/* Information Grid */}
                 <div className="info-grid pt-32 px-5 relative z-40">
-                    <div className="info-item relative p-5 rounded-lg flex flex-col h-full w-full overflow-hidden">
+                    <div className="info-item batteryInfo relative p-5 rounded-lg flex flex-col h-full w-full overflow-hidden">
                         <div className="card-glow absolute rounded-full"/>
                         <img src="\assets\info-icons\batteryInfo.png" alt="Battery Information" className="card-icon absolute -top-5 -right-5"/>
                         <span className="title text-white bit-font text-4xl">Battery Info</span>
@@ -120,7 +120,11 @@ export const Home = () => {
                         <div className="bullet-grid mt-4">
                             <div className="bullet-item text-white flex items-center gap-x-2">
                                 <i className="fa-solid fa-battery"/>
-                                <span className="bullet-text">Sample Text</span>
+                                <span className="bullet-text">97%</span>
+                            </div>
+                            <div className="bullet-item text-white flex items-center gap-x-2">
+                                <i className="fa-solid fa-plug"/>
+                                <span className="bullet-text">Charging</span>
                             </div>
                         </div>
                     </div>

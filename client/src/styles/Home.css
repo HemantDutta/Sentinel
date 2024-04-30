@@ -47,8 +47,6 @@
     background-image: linear-gradient(#202020 2px, transparent 2px), linear-gradient(to right, #202020 2px, transparent 2px);
     background-size: 53px 53px;
     background-color: #181818;
-    box-shadow:  20px 20px 60px #131313,
-    -20px -20px 60px #22351f;
 }
 
 .home .info-grid .info-item .card-glow {
@@ -58,6 +56,15 @@
     top: -15%;
     aspect-ratio: 1/1;
     filter: blur(20px);
+}
+
+.home .info-grid .info-item.batteryInfo {
+    box-shadow:  20px 20px 60px #131313,
+    -20px -20px 60px #22351f;
+    grid-column: 1/2;
+}
+
+.home .info-grid .info-item.batteryInfo .card-glow {
     background: linear-gradient(to right, transparent, #a6ff96);
 }
 
@@ -65,6 +72,13 @@
     height: 128px;
     rotate: -25deg;   
     opacity: 0.2;
+}
+
+.home .info-grid .info-item .bullet-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
 }
 
 /* Info Item End */
