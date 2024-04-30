@@ -105,7 +105,15 @@ export const Digger = {
                 let debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
                 let renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
                 let vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
-                return { renderer, vendor };
+                return {
+                    renderer: {
+                        icon: "fa-solid fa-gamepad",
+                        value: renderer.substring(7,42) + "..."
+                    }, vendor: {
+                        icon: "fa-solid fa-copyright",
+                        value: vendor
+                    }
+                };
             } else {
                 return { error: "GPU Information Not Found" };
             }

@@ -61,12 +61,22 @@
 
 .home .info-grid .info-item.batteryInfo {
     box-shadow:  20px 20px 60px #131313,
-    -20px -20px 60px #22351f;
+    -10px -10px 20px #22351f;
     grid-column: 1/2;
 }
 
 .home .info-grid .info-item.batteryInfo .card-glow {
     background: linear-gradient(to right, transparent, #a6ff96);
+}
+
+.home .info-grid .info-item.GpuInfo {
+    box-shadow:  20px 20px 60px #131313,
+    -10px -10px 20px #4e1a39;
+    grid-column: 1/2;
+}
+
+.home .info-grid .info-item.GpuInfo .card-glow {
+    background: linear-gradient(to right, transparent, #FF55BB);
 }
 
 .home .info-grid .info-item .card-icon {
@@ -80,6 +90,7 @@
     gap: 16px;
     grid-template-columns: 1fr 1fr;
     width: 100%;
+    align-items: start;
 }
 
 /* Info Item End */

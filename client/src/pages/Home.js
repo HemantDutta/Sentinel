@@ -95,6 +95,7 @@ export const Home = () => {
     useEffect(() => {
         Digger.fetchIP(getIP);
         Digger.fetchBatteryInfo(getBatteryInfo);
+        setGpuInfo(Digger.fetchGPUInfo())
     }, [])
 
     //Error Logger (Remove in PROD)
@@ -111,6 +112,14 @@ export const Home = () => {
             text: "Device's Battery Levels & Charging Status",
             bulletData: batteryInfo,
             error: errors.batteryInfo
+        },
+        {
+            title: "GPU Info",
+            specialClass: "GpuInfo",
+            cardIconSrc: "\\assets\\info-icons\\gpuinfo.png",
+            text: "Graphics Card Information",
+            bulletData: gpuInfo,
+            error: errors.gpuInfo
         }
     ]
 
