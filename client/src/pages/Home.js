@@ -112,11 +112,6 @@ export const Home = () => {
         setConnectionDetails(Digger.fetchConnectionDetails());
     }, [])
 
-    //Error Logger (Remove in PROD)
-    useEffect(() => {
-        console.log(errors);
-    }, [errors])
-
     //Static Data
     let InfoItemData = [
         {

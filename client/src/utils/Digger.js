@@ -5,14 +5,16 @@ const endpoint = "https://sentinel-server.onrender.com";
 
 //Internal Functions
 function fetchUserInfoFromIp(ip, fn) {
-    axios.get("http://ip-api.com/json/" + ip)
+    axios.post(endpoint + "/ip-data", {
+        ip: ip
+    })
         .then((res) => {
-            console.log(res.data);
             fn({ ip: ip, data: res.data });
         })
         .catch(err => {
             fn({ error: "IP Details Not Found" });
         })
+
 }
 
 //Digger Object
@@ -64,13 +66,15 @@ export const Digger = {
             if (navigator.connection) {
                 let connectionType = navigator.connection.effectiveType;
                 let connectionSpeed = navigator.connection.downlink;
-                return { connectionType: {
-                    icon: "fa-solid fa-wifi",
-                    value: connectionType
-                }, connectionSpeed: {
-                    icon: "fa-solid fa-gauge",
-                    value: connectionSpeed + " Mbps"
-                } };
+                return {
+                    connectionType: {
+                        icon: "fa-solid fa-wifi",
+                        value: connectionType
+                    }, connectionSpeed: {
+                        icon: "fa-solid fa-gauge",
+                        value: connectionSpeed + " Mbps"
+                    }
+                };
             } else {
                 return { error: "Connection Details Not Found" };
             }
@@ -85,7 +89,7 @@ export const Digger = {
             let logicalProcessors = navigator.hardwareConcurrency;
             return {
                 platform: {
-                    icon: platform.match(/win/gi) ? "fa-brands fa-windows" : platform.match(/android/gi) ? "fa-brands fa-android" : platform.match(/linux/gi) ? "fa-brands fa-linux" : platform.substring(0,1) === "i" || platform.match(/mac/gi) ? "fa-brands fa-apple" : "fa-solid fa-computer",
+                    icon: platform.match(/win/gi) ? "fa-brands fa-windows" : platform.match(/android/gi) ? "fa-brands fa-android" : platform.match(/linux/gi) ? "fa-brands fa-linux" : platform.substring(0, 1) === "i" || platform.match(/mac/gi) ? "fa-brands fa-apple" : "fa-solid fa-computer",
                     value: platform
                 }, logicalProcessors: {
                     icon: "fa-solid fa-microchip",
@@ -101,14 +105,14 @@ export const Digger = {
         try {
             navigator.mediaDevices.enumerateDevices()
                 .then(devices => {
-                    fn({error: "", data: devices});
+                    fn({ error: "", data: devices });
                 })
                 .catch(error => {
-                    fn({error: "Connected Devices Not Found" });
+                    fn({ error: "Connected Devices Not Found" });
                 });
         }
         catch (err) {
-            fn({error: "Connected Devices Not Found"});
+            fn({ error: "Connected Devices Not Found" });
         }
     },
     fetchGPUInfo() {
