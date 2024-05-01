@@ -1,0 +1,10 @@
+/* Navbar Stylesheet */
+
+nav {
+    transition: all 0.4s cubic-bezier(0.87, 0, 0.13, 1);
+    transform: translateY(0);
+}
+
+nav.hide {
+    transform: translateY(-100%);
+}
