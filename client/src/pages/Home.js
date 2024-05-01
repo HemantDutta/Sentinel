@@ -3,6 +3,7 @@ import { Digger } from "../utils/Digger"
 import { Navbar } from "../components/Navbar"
 import "../styles/Home.css";
 import { InfoItem } from "../components/InfoItem";
+import { Footer } from "../components/Footer";
 
 export const Home = () => {
 
@@ -112,6 +113,8 @@ export const Home = () => {
         setConnectionDetails(Digger.fetchConnectionDetails());
         setReferrer(Digger.fetchReferrer());
         setUserAgent(Digger.fetchUserAgent());
+        setMemoryInfo(Digger.fetchMemoryInfo());
+        setDeviceDimensions(Digger.fetchDeviceDimnesions());
 
         //Connection Detail Fetching on Interval
         const connectionInterval = setInterval(() => {
@@ -180,17 +183,17 @@ export const Home = () => {
                 <div className="TopBar p-5 pt-24 flex items-center justify-between flex-wrap">
                     <div className="referrer-details">
                         <span className="bit-font text-2xl text-gradient">Referrer: </span>
-                        <a href={referrer.referrer ?? "#"} className="text-white underline underline-offset-2 transition hover:text-green-400">{referrer.referrer ?? "Not Found"}</a>
+                        <a href={referrer.referrer ?? "#"} className="text-white underline underline-offset-2 transition hover:text-green-400">{referrer.referrer && referrer.referrer.length !== 0 ? referrer.referrer : "Not Found"}</a>
                     </div>
-                    <div className="github-source p-2 flex items-center gap-x-2 cursor-pointer" onClick={()=>{document.getElementById("git-source").click()}}>
-                        <a href="https://github.com/HemantDutta/Sentinel" target="_blank" rel="noreferrer" className="hidden" id="git-source"/>
+                    <div className="github-source p-2 flex items-center gap-x-2 cursor-pointer" onClick={() => { document.getElementById("git-source").click() }}>
+                        <a href="https://github.com/HemantDutta/Sentinel" target="_blank" rel="noreferrer" className="hidden" id="git-source" />
                         <i className="fa-brands fa-github text-white"></i>
                         <span className="bit-font text-2xl text-gradient">Source Code</span>
                     </div>
                 </div>
                 {/* TopBar End */}
                 {/* Information Grid */}
-                <div className="info-grid pt-5 pb-20 px-5 relative z-40">
+                <div className="info-grid pt-5 px-5 relative z-40">
                     <div className="info-item ipData relative p-5 rounded-lg flex flex-col h-full w-full overflow-hidden">
                         <div className="card-glow absolute rounded-full z-10" />
                         <img src="\assets\info-icons\ipInfo.png" alt="IP Data" className="card-icon absolute -top-5 -right-5 z-20" />
@@ -257,8 +260,84 @@ export const Home = () => {
                     }
                 </div>
                 {/* Information Grid End */}
+                {/* More Information Flex */}
+                <div className="more-info px-5 pt-16 pb-20">
+                    <span className="head text-4xl text-white bit-font">More Information</span>
+                    <div className="more-info-flex pt-5 p-5 rounded-lg flex items-start flex-wrap gap-x-5 gap-y-10">
+                        <div className="more-info-item flex flex-col gap-1">
+                            <span className="title text-white text-3xl bit-font">Performance Info</span>
+                            <span className="details text-lg text-gray-400">System Performance Information</span>
+                            {
+                                !errors.memoryInfo &&
+                                <div className="more-info-bullet mt-2">
+                                    <div className="bullet-item">
+                                        <span className="text-white">Allocated Heap Size: {memoryInfo.allocatedSize} Bytes</span>
+                                    </div>
+                                    <div className="bullet-item">
+                                        <span className="text-white">Total Size: {memoryInfo.totalSize} Bytes</span>
+                                    </div>
+                                    <div className="bullet-item">
+                                        <span className="text-white">Used Size: {memoryInfo.usedSize} Bytes</span>
+                                    </div>
+                                    <div className="bullet-item flex flex-col gap-1 items-start">
+                                        <span className="text-white">Performance Test Time: {memoryInfo.performanceTime} ms</span>
+                                        <span className="details text-sm text-gray-400">Based on 100 million iteration, single operation loop execution time</span>
+                                    </div>
+                                </div>
+                            }
+                            {
+                                errors.memoryInfo &&
+                                <p className="text-white">Couldn't Fetch Perfomance Information</p>
+                            }
+                        </div>
+                        <div className="more-info-item flex flex-col gap-1">
+                            <span className="title text-white text-3xl bit-font">Display Info</span>
+                            <span className="details text-lg text-gray-400">Device Display Dimensions</span>
+                            {
+                                !errors.deviceDimensions &&
+                                <div className="more-info-bullet mt-2">
+                                    <div className="bullet-item">
+                                        <span className="text-white">Screen Width: {deviceDimensions.screenWidth}px</span>
+                                    </div>
+                                    <div className="bullet-item">
+                                        <span className="text-white">Screen Height: {deviceDimensions.screenHeight}px</span>
+                                    </div>
+                                    <div className="bullet-item">
+                                        <span className="text-white">Available Screen Width: {deviceDimensions.screenAvailWidth}px</span>
+                                    </div>
+                                    <div className="bullet-item">
+                                        <span className="text-white">Available Screen Height: {deviceDimensions.screenAvailHeight}px</span>
+                                    </div>
+                                </div>
+                            }
+                            {
+                                errors.deviceDimensions &&
+                                <p className="text-white">Couldn't Fetch Device Dimensions</p>
+                            }
+                        </div>
+                        <div className="more-info-item flex flex-col gap-1">
+                            <span className="title text-white text-3xl bit-font">User Agent</span>
+                            <span className="details text-lg text-gray-400">Browser Information</span>
+                            {
+                                !errors.userAgent &&
+                                <>
+                                    <p className="text-white">{userAgent.userAgent}</p>
+                                    <p className="text-gray-400 text-sm">You might be wondering why its showing the name of every single browser in existence. The reason is simple, some sites perform browser sniffing and degrade functionality for unsupported browsers. So browsers like "Chrome" and "Safari" include all browsers in the userAgent string.</p>
+                                </>
+                            }
+                            {
+                                errors.userAgent &&
+                                <p className="text-white">Couldn't Fetch User Agent</p>
+                            }
+                        </div>
+                    </div>
+                </div>
+                {/* More Information Flex End */}
             </div>
             {/* Home Page End*/}
+            {/* Footer */}
+            <Footer/>
+            {/* Footer End */}
         </>
     )
 }
