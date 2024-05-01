@@ -102,7 +102,7 @@ export const Home = () => {
         }
     }, [])
 
-    //Check Data Fetching
+    //Startup Data Fetching
     useEffect(() => {
         Digger.fetchIP(getIP);
         Digger.fetchBatteryInfo(getBatteryInfo);
@@ -110,7 +110,20 @@ export const Home = () => {
         setHardwareInfo(Digger.fetchHardwareInfo())
         Digger.fetchConnectedDevices(getConnectedDevices);
         setConnectionDetails(Digger.fetchConnectionDetails());
+        setReferrer(Digger.fetchReferrer());
+        setUserAgent(Digger.fetchUserAgent());
+
+        //Connection Detail Fetching on Interval
+        const connectionInterval = setInterval(() => {
+            setConnectionDetails(Digger.fetchConnectionDetails());
+        }, 5000)
+
+        return () => {
+            clearInterval(connectionInterval);
+        }
     }, [])
+
+
 
     //Static Data
     let InfoItemData = [
@@ -163,12 +176,21 @@ export const Home = () => {
             {/* Navbar End */}
             {/* Home Page */}
             <div className="home relative" id="home">
-                {/* Blobs */}
-                {/* <div className="blob blob-top -top-24 left-96 z-20" />
-                <div className="blob blob-glow -top-24 left-96 z-10" /> */}
-                {/* Blobs End */}
+                {/* TopBar */}
+                <div className="TopBar p-5 pt-24 flex items-center justify-between flex-wrap">
+                    <div className="referrer-details">
+                        <span className="bit-font text-2xl text-gradient">Referrer: </span>
+                        <a href={referrer.referrer ?? "#"} className="text-white underline underline-offset-2 transition hover:text-green-400">{referrer.referrer ?? "Not Found"}</a>
+                    </div>
+                    <div className="github-source p-2 flex items-center gap-x-2 cursor-pointer" onClick={()=>{document.getElementById("git-source").click()}}>
+                        <a href="https://github.com/HemantDutta/Sentinel" target="_blank" rel="noreferrer" className="hidden" id="git-source"/>
+                        <i className="fa-brands fa-github text-white"></i>
+                        <span className="bit-font text-2xl text-gradient">Source Code</span>
+                    </div>
+                </div>
+                {/* TopBar End */}
                 {/* Information Grid */}
-                <div className="info-grid pt-32 pb-20 px-5 relative z-40">
+                <div className="info-grid pt-5 pb-20 px-5 relative z-40">
                     <div className="info-item ipData relative p-5 rounded-lg flex flex-col h-full w-full overflow-hidden">
                         <div className="card-glow absolute rounded-full z-10" />
                         <img src="\assets\info-icons\ipInfo.png" alt="IP Data" className="card-icon absolute -top-5 -right-5 z-20" />
@@ -181,7 +203,7 @@ export const Home = () => {
                             !ipLoaded && !errors.ip &&
                             <div className="flex items-center gap-2">
                                 <span className="details text-gray-400">Loading IP Data</span>
-                                <img src="/assets/Home/sen_loader.svg" alt="Loader" className="h-4"/>
+                                <img src="/assets/Home/sen_loader.svg" alt="Loader" className="h-4" />
                             </div>
                         }
                         {

@@ -13,22 +13,12 @@
     min-height: 100vh;
 }
 
-/* Blobs */
-
-.home .blob {
-    position: absolute;
-    height: 300px;
-    aspect-ratio: 1/1;
-    border-radius: 100%;
-    background: linear-gradient(to top, var(--clr-3), var(--clr-2), var(--clr-1));
-    filter: blur(50px);
+.home .github-source {
+    border-radius: 20px;
+    background: linear-gradient(145deg, #111111, #141414);
+    box-shadow:  10px 10px 20px #0d0d0d,
+                 -10px -10px 20px #191919;
 }
-
-.home .blob.blob-glow {
-    filter: blur(150px);
-}
-
-/* Blobs End */
 
 /* Info-Grid */
 
@@ -60,8 +50,8 @@
 }
 
 .home .info-grid .info-item.batteryInfo {
-    box-shadow:  20px 20px 60px #131313,
-    -10px -10px 20px #22351f;
+    box-shadow: 20px 20px 60px #131313,
+        -10px -10px 20px #22351f;
     grid-column: 1/2;
 }
 
@@ -70,8 +60,8 @@
 }
 
 .home .info-grid .info-item.GpuInfo {
-    box-shadow:  20px 20px 60px #131313,
-    -10px -10px 20px #4e1a39;
+    box-shadow: 20px 20px 60px #131313,
+        -10px -10px 20px #4e1a39;
     grid-column: 1/2;
 }
 
@@ -80,8 +70,8 @@
 }
 
 .home .info-grid .info-item.HardInfo {
-    box-shadow:  20px 20px 60px #131313,
-    -10px -10px 20px #284b50;
+    box-shadow: 20px 20px 60px #131313,
+        -10px -10px 20px #284b50;
     grid-column: 1/2;
 }
 
@@ -90,8 +80,8 @@
 }
 
 .home .info-grid .info-item.connectedDevices {
-    box-shadow:  20px 20px 60px #131313,
-    -10px -10px 20px #444629;
+    box-shadow: 20px 20px 60px #131313,
+        -10px -10px 20px #444629;
 }
 
 .home .info-grid .info-item.connectedDevices .card-glow {
@@ -99,8 +89,8 @@
 }
 
 .home .info-grid .info-item.connection {
-    box-shadow:  20px 20px 60px #131313,
-    -10px -10px 20px #532b00;
+    box-shadow: 20px 20px 60px #131313,
+        -10px -10px 20px #532b00;
 }
 
 .home .info-grid .info-item.connection .card-glow {
@@ -108,8 +98,8 @@
 }
 
 .home .info-grid .info-item.ipData {
-    box-shadow:  20px 20px 60px #131313,
-    -2px -2px 20px #074b39;
+    box-shadow: 20px 20px 60px #131313,
+        -2px -2px 20px #074b39;
     grid-column: 2/-1;
     grid-row: 1/3;
 }
@@ -120,7 +110,7 @@
 
 .home .info-grid .info-item .card-icon {
     height: 128px;
-    rotate: -25deg;   
+    rotate: -25deg;
     opacity: 0.2;
 }
 
@@ -133,7 +123,7 @@
 }
 
 @media screen and (max-width: 921px) {
-    .home .info-grid .info-item .bullet-grid  {
+    .home .info-grid .info-item .bullet-grid {
         grid-template-columns: 1fr;
     }
 }
@@ -142,9 +132,10 @@
     .home .info-grid {
         grid-template-columns: 1fr;
     }
-    
-    .home .info-grid > * {
+
+    .home .info-grid>* {
         grid-column: 1/-1 !important;
     }
 }
+
 /* Info Item End */

@@ -1,5 +1,13 @@
 /* Sentinel Global Stylesheet */
 
+:root {
+    --bg-color: #131313;
+    --clr-1: #E26EE5;
+    --clr-2: #7E30E1;
+    --clr-3: #49108B;
+    --info-item-bg: #181818;
+}
+
 *,
 *::after,
 *::before {
@@ -13,6 +21,40 @@ body {
     padding: 0;
 }
 
+body, html, #root {
+    background-color: var(--bg-color);
+}
+
 .bit-font {
     font-family: "Jersey 10", sans-serif;
+}
+
+.text-gradient {
+    background: linear-gradient(45deg, var(--clr-3), var(--clr-2), var(--clr-1));
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.text-gradient-2 {
+    background: linear-gradient(45deg, var(--clr-1), var(--clr-2), var(--clr-3));
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #303030;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
