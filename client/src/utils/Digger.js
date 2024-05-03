@@ -151,7 +151,7 @@ export const Digger = {
             }
             let endTime = window.performance.now();
             let elapsedTime = endTime - startTime;
-            return { allocatedSize: Math.ceil(jsHeapSizeLimit), totalSize: Math.ceil(totalJSHeapSize), usedSize: Math.ceil(usedJSHeapSize), performanceTime: Math.ceil(elapsedTime), approxMemory };
+            return { allocatedSize: Math.ceil(jsHeapSizeLimit/bytes), totalSize: Math.ceil(totalJSHeapSize/bytes), usedSize: Math.ceil(usedJSHeapSize/bytes), performanceTime: Math.ceil(elapsedTime), approxMemory };
         }
         catch (err) {
             return { error: "Memeory Information Not Found" };

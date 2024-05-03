@@ -4,6 +4,7 @@ import { Navbar } from "../components/Navbar"
 import "../styles/Home.css";
 import { InfoItem } from "../components/InfoItem";
 import { Footer } from "../components/Footer";
+import { PreLoader } from "../components/PreLoader";
 
 export const Home = () => {
 
@@ -271,13 +272,13 @@ export const Home = () => {
                                 !errors.memoryInfo &&
                                 <div className="more-info-bullet mt-2">
                                     <div className="bullet-item">
-                                        <span className="text-white">Allocated Heap Size: {memoryInfo.allocatedSize} Bytes</span>
+                                        <span className="text-white">Allocated Heap Size: {memoryInfo.allocatedSize} GB</span>
                                     </div>
                                     <div className="bullet-item">
-                                        <span className="text-white">Total Size: {memoryInfo.totalSize} Bytes</span>
+                                        <span className="text-white">Total Size: {memoryInfo.totalSize} GB</span>
                                     </div>
                                     <div className="bullet-item">
-                                        <span className="text-white">Used Size: {memoryInfo.usedSize} Bytes</span>
+                                        <span className="text-white">Used Size: {memoryInfo.usedSize} GB</span>
                                     </div>
                                     <div className="bullet-item flex flex-col gap-1 items-start">
                                         <span className="text-white">Performance Test Time: {memoryInfo.performanceTime} ms</span>

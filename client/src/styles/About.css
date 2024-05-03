@@ -1,0 +1,5 @@
+/* About Page CSS */
+
+.graphics .graphic-wrapper .graphic-overlay {
+    background: linear-gradient(to bottom, transparent, #131313 100%);
+}
