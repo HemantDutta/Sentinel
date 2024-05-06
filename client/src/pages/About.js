@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Footer } from "../components/Footer"
 import { Navbar } from "../components/Navbar"
+import {ScrollTop} from "../components/ScrollTop";
 import "../styles/About.css";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -91,6 +92,7 @@ export const About = () => {
 
     return (
         <>
+        <ScrollTop/>
             {/* Navbar */}
             <Navbar />
             {/* Navbar End */}

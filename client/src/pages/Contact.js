@@ -1,7 +1,8 @@
 import { useEffect, useRef } from "react"
 import { Footer } from "../components/Footer"
 import { Navbar } from "../components/Navbar"
-import gsap from "gsap"
+import gsap from "gsap";
+import { ScrollTop } from "../components/ScrollTop";
 import "../styles/Contact.css";
 
 export const Contact = () => {
@@ -36,6 +37,7 @@ export const Contact = () => {
 
     return (
         <>
+            <ScrollTop />
             {/* Navbar */}
             <Navbar />
             {/* Navbar End */}

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 import { Digger } from "../utils/Digger"
 import { Navbar } from "../components/Navbar"
-import "../styles/Home.css";
 import { InfoItem } from "../components/InfoItem";
 import { Footer } from "../components/Footer";
+import {ScrollTop} from "../components/ScrollTop";
 import gsap from "gsap";
+import "../styles/Home.css";
 
 export const Home = () => {
 
@@ -191,6 +192,7 @@ export const Home = () => {
 
     return (
         <>
+        <ScrollTop/>
             {/* Navbar */}
             <Navbar />
             {/* Navbar End */}
