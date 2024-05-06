@@ -4,7 +4,7 @@ import { Navbar } from "../components/Navbar"
 import "../styles/Home.css";
 import { InfoItem } from "../components/InfoItem";
 import { Footer } from "../components/Footer";
-import { PreLoader } from "../components/PreLoader";
+import gsap from "gsap";
 
 export const Home = () => {
 
@@ -13,7 +13,6 @@ export const Home = () => {
     const [userAgent, setUserAgent] = useState("");
     const [referrer, setReferrer] = useState("");
     const [deviceDimensions, setDeviceDimensions] = useState({});
-    const [pluginsExtensions, setPluginsExtensions] = useState({});
     const [connectionDetails, setConnectionDetails] = useState({});
     const [hardwareInfo, setHardwareInfo] = useState({});
     const [connectedDevices, setConnectedDevices] = useState([]);
@@ -127,8 +126,6 @@ export const Home = () => {
         }
     }, [])
 
-
-
     //Static Data
     let InfoItemData = [
         {
@@ -172,6 +169,25 @@ export const Home = () => {
             error: errors.connectionDetails
         },
     ]
+
+    //Animations
+    useEffect(()=>{
+        const tl = gsap.timeline();
+
+        tl
+            .from(".card-glow", {
+                opacity: 0,
+                duration: 0.4,
+                ease: "bounce.in",
+                stagger: 0.1,
+            })
+            .from(".info-item .card-icon", {
+                opacity: 0,
+                duration: 0.4,
+                ease: "power4.in",
+                stagger: -0.1
+            }, 0)
+    },[])
 
     return (
         <>

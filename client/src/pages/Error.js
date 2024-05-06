@@ -11,7 +11,7 @@ export const Error = () => {
 
     //Interval
     useEffect(() => {
-        const countdown = setInterval(() => {
+        const countdown = setTimeout(() => {
             setTimer(timer - 1);
         }, 1000)
 
@@ -25,7 +25,7 @@ export const Error = () => {
             }
         }
 
-        return () => clearInterval(countdown)
+        return () => clearTimeout(countdown)
     }, [timer])
 
     return (
