@@ -199,7 +199,7 @@ export const Home = () => {
             {/* Home Page */}
             <div className="home relative" id="home">
                 {/* TopBar */}
-                <div className="TopBar p-5 pt-24 flex items-center justify-between flex-wrap">
+                <div className="TopBar p-5 pt-24 flex items-center justify-between flex-wrap gap-5">
                     <div className="referrer-details">
                         <span className="bit-font text-2xl text-gradient">Referrer: </span>
                         <a href={referrer.referrer ?? "#"} className="text-white underline underline-offset-2 transition hover:text-green-400">{referrer.referrer && referrer.referrer.length !== 0 ? referrer.referrer : "Not Found"}</a>
