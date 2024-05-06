@@ -2,6 +2,7 @@
 > Your Digital Guardian
 
 <img src="git_assets/sentinel_home.png" alt="Sentinel Home Page"/>
+🔗<a href="https://sentinel-hd.vercel.app/" rel="noreferrer" target="_blank">Check it out!</a>
 
 ## Find out what they can see...
 
