@@ -1,6 +1,8 @@
 # Sentinel
 > Your Digital Guardian
 
+<img src="git_assets/sentinel_home.png" alt="Sentinel Home Page"/>
+
 ## Find out what they can see...
 
 We open hundreds of websites everyday. Ever wondered how much data these websites can legally/ethically access about you and your devices from your browser?
