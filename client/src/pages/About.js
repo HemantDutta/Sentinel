@@ -125,7 +125,7 @@ export const About = () => {
                                 <span className="text-white">Are you being hacked? Is someone looking into your laptop screen through your window? No, nothing of that sort is happening (Well, I am not sure about the window thing, someone might be there, I don't know).</span>
                                 <span className="text-white">All of this information is openly available to any website using vanilla JavaScript, Web APIs such as navigator, Global Objects like "document" and "window" and a few other things.</span>
                                 <span className="text-white">So imagine, if a regular website can ethically get all this information about you, what information can a person with no ethics and morals find out about you through the Internet.</span>
-                                <span className="text-white">I don't why I am writing all this, maybe to tell you to be safe on the Internet and don't open websites that can't be trusted, or do it, it's really upto you, I just wanted to make a cool mini project.</span>
+                                <span className="text-white">I don't know why I am writing all this, maybe to tell you to be safe on the Internet and don't open websites that can't be trusted, or do it, it's really upto you, I just wanted to make a cool mini project.</span>
                             </div>
                         </div>
                     </div>

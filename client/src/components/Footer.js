@@ -6,7 +6,7 @@ export const Footer = () => {
             <footer className="px-5 py-2">
                 <div className="footer-container w-full flex items-center justify-between">
                     <div className="credits">
-                        <a href="https://github.com/HemantDutta/Sentinel" rel="noreferrer" target="_blank" className="text-white text-sm">&copy; SENTINEL by </a><a href="https://github.com/HemantDutta" className="underline underline-offset-2 text-white text-sm" rel="noreferrer" target="_blank">Hemant Dutta</a>
+                        <a href="https://github.com/HemantDutta/Sentinel" rel="noreferrer" target="_blank" className="text-white text-sm">SENTINEL by </a><a href="https://github.com/HemantDutta" className="underline underline-offset-2 text-white text-sm" rel="noreferrer" target="_blank">Hemant Dutta</a>
                     </div>
                     <div className="sitemap flex items-center gap-3 flex-wrap text-sm">
                         <Link to="/" className="text-white transition hover:underline underline-offset-2">Home</Link>
